@@ -1,0 +1,51 @@
+.legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem; /* 16px */
+    /* Aplicando nosso relevo principal ao contentor */
+    box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+}
+
+.legal-container h1 {
+    color: #343A40; /* text-text-primary */
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.legal-container h2 {
+    color: #343A40; /* text-text-primary */
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #d1d9e6; /* Sombra clara para a linha */
+}
+
+.legal-container p, .legal-container li {
+    color: #6C757D; /* text-text-secondary */
+    line-height: 1.75;
+    margin-bottom: 1rem;
+}
+
+.legal-container strong {
+    color: #343A40; /* text-text-primary */
+}
+
+.legal-container .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem; /* 12px 24px */
+    border-radius: 9999px; /* rounded-full */
+    color: #343A40; /* text-text-primary */
+    box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+    transition: all 0.3s ease;
+}
+
+.legal-container .back-link:active {
+     box-shadow: inset 8px 8px 16px #d1d9e6, inset -8px -8px 16px #ffffff;
+}
