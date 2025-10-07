@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'Contato Site <onboarding@resend.dev>', // Este email deve ser verificado no Resend
+      from: 'Contato QTech <contato@qtechsolucoestecnologicas.com>',
       to: ['qtechsolucoestecnologicas@gmail.com'], // O seu email para receber os contatos
       subject: `Nova Mensagem de Contato de ${name}`,
       replyTo: email,

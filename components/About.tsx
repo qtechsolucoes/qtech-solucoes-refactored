@@ -1,5 +1,7 @@
 // components/About.tsx
 
+import { CheckCircle } from 'lucide-react'; // Importando um ícone para a lista
+
 // --- LISTA DE TECNOLOGIAS ATUALIZADA ---
 const technologies = [
   'React, Next.js, Vue.js, Angular',
@@ -38,12 +40,19 @@ export function About() {
           tecnológica, a escolha preferencial para empresas que buscam
           excelência e vanguarda em soluções digitais.
         </p>
-        <h3 className="text-2xl font-semibold text-text-primary pt-4">
+        
+        {/* --- ALTERAÇÃO DE ESPAÇAMENTO AQUI --- */}
+        <h3 className="text-2xl font-semibold text-text-primary pt-4 mb-4">
           Tecnologias que dominamos:
         </h3>
-        <ul className="list-disc list-inside grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-text-secondary">
+        
+        {/* A lista agora usa flexbox para melhor alinhamento dos ícones */}
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-text-secondary">
           {technologies.map((tech, index) => (
-            <li key={index}>{tech}</li>
+            <li key={index} className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mr-3 mt-1" />
+                <span>{tech}</span>
+            </li>
           ))}
         </ul>
       </div>

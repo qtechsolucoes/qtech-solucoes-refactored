@@ -1,3 +1,5 @@
+// components/Pricing.tsx
+
 import { Check } from 'lucide-react';
 
 const plans = [
@@ -36,6 +38,19 @@ const plans = [
     ],
     highlight: false,
   },
+  // --- NOVO PLANO ADICIONADO AQUI ---
+  {
+    name: 'Desktop & Mobile',
+    price: 'A partir de R$ 3000,00',
+    features: [
+      'Tudo do Premium',
+      'Aplicativos Nativos (iOS/Android) ou Híbridos (Flutter)',
+      'Sistemas Desktop (Windows, macOS, Linux)',
+      'Integrações Avançadas e APIs',
+      'Suporte e Manutenção Contínua',
+    ],
+    highlight: false,
+  },
 ];
 
 export function Pricing() {
@@ -47,7 +62,8 @@ export function Pricing() {
       <h2 className="section-title animate-fade-in opacity-0">
         Nossos <span className="gradient-text">Planos</span>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full">
+      {/* --- LAYOUT DO GRID ALTERADO AQUI --- */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl w-full">
         {plans.map((plan, index) => (
           <div
             key={plan.name}
@@ -61,7 +77,6 @@ export function Pricing() {
             <h3 className="text-3xl font-bold mb-4 text-center text-text-primary">
               {plan.name}
             </h3>
-            {/* --- A ALTERAÇÃO ESTÁ AQUI --- */}
             <p className="text-4xl font-extrabold text-center mb-6 gradient-text">
               {plan.price}
             </p>
