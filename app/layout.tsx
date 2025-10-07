@@ -20,6 +20,12 @@ export const metadata: Metadata = {
   verification: {
     google: "Jcf9ZHkGvj_QsCmo4QRMt5Gvh5JY83mUf8NqlCrVA2o",
   },
+  // --- CORREÇÃO DO FAVICON AQUI ---
+  icons: {
+    icon: '/favicon.ico', // Ícone padrão
+    apple: '/logo_image.png', // Ícone para dispositivos Apple
+    shortcut: '/logo_image.png', // Ícone de atalho
+  },
   openGraph: {
     title: "QTech Soluções Tecnológicas: Inovação e Expertise Digital",
     description: "Desenvolvemos soluções web, sistemas personalizados, IA e softwares sob demanda.",
@@ -71,10 +77,8 @@ export default function RootLayout({
           }}
         />
         
-        {/* Animações de fundo ficam fora do invólucro para garantir que fiquem atrás */}
         <NeuralNetworkBackground />
 
-        {/* O invólucro (wrapper) que resolve o problema de sobreposição */}
         <div className="relative z-10 flex flex-col flex-grow w-full">
           <Header />
           <main className="flex-grow">
@@ -83,7 +87,6 @@ export default function RootLayout({
           <Footer />
         </div>
         
-        {/* Botões flutuantes ficam no topo de tudo */}
         <FloatingButtons />
       </body>
     </html>
