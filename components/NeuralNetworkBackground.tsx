@@ -30,16 +30,19 @@ export function NeuralNetworkBackground() {
       color: string;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5; // Movimento mais lento
-        this.vy = (Math.random() - 0.5) * 0.5; // Movimento mais lento
+        this.x = canvas ? Math.random() * canvas.width : 0;
+        this.y = canvas ? Math.random() * canvas.height : 0;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
         this.radius = Math.random() * 1.5;
-        // Alterna entre a cor primária (azul) e a cor de texto (preto/cinza)
         this.color = Math.random() > 0.5 ? 'rgba(0, 191, 255, 0.5)' : 'rgba(52, 58, 64, 0.5)';
       }
 
       update() {
+        // --- NOVA CORREÇÃO AQUI ---
+        // Adicionamos esta verificação para resolver os novos erros.
+        if (!canvas) return;
+
         this.x += this.vx;
         this.y += this.vy;
 
@@ -48,10 +51,10 @@ export function NeuralNetworkBackground() {
       }
 
       draw() {
+        if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        // --- OPACIDADE REDUZIDA AQUI ---
-        ctx.fillStyle = this.color; // Usa a cor definida (azul ou preto) com 50% de opacidade
+        ctx.fillStyle = this.color;
         ctx.fill();
       }
     }
@@ -64,8 +67,8 @@ export function NeuralNetworkBackground() {
     };
 
     const connectParticles = () => {
-      // --- OPACIDADE GERAL DAS LINHAS REDUZIDA AQUI ---
-      const maxOpacity = 0.35; // Reduzimos a opacidade máxima das linhas para 35%
+      if (!ctx) return;
+      const maxOpacity = 0.35;
 
       for (let i = 0; i < particles.length; i++) {
         for (let j = i; j < particles.length; j++) {
@@ -78,7 +81,6 @@ export function NeuralNetworkBackground() {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            // Usa a cor de texto secundária (cinza) para as linhas, com opacidade reduzida
             ctx.strokeStyle = `rgba(108, 117, 125, ${(1 - distance / 120) * maxOpacity})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
@@ -89,6 +91,7 @@ export function NeuralNetworkBackground() {
     
     let animationFrameId: number;
     const animate = () => {
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => {
         p.update();
